@@ -16,8 +16,8 @@ Config.BikeEndorsement = false                                 -- (true | false)
 
 Config.Locations = {  -- Coords and Ped to Spawn
   [1] = {
-    pedModel = `s_m_y_cop_01`, 
-    coords = vector4(214.6, -1400.15, 30.58, 324.82),
+    pedModel = `a_m_y_busicas_01`, 
+    coords = vector4(-262.79, -964.18, 30.22, 181.71),
     blip = {
       showblip = true,
       blipsprite = 380,
