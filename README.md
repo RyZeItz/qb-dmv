@@ -219,6 +219,46 @@ Config.Cityhalls = {
 
 <br />
 
+## QB-Cityhall/config.lua
+**FIND AND REMOVE**
+```
+Config.DrivingSchools = {
+    { -- Driving School 1
+        coords = vec3(240.3, -1379.89, 33.74),
+        showBlip = true,
+        blipData = {
+            sprite = 225,
+            display = 4,
+            scale = 0.65,
+            colour = 3,
+            title = 'Driving School'
+        },
+        instructors = {
+            'DJD56142',
+            'DXT09752',
+            'SRI85140',
+        }
+    },
+}
+```
+
+<br />
+
+## QB-Cityhall/config.lua
+**FIND AND REMOVE**
+```
+    {
+        model = 'a_m_m_eastsa_02',
+        coords = vec4(240.91, -1379.2, 32.74, 138.96),
+        scenario = 'WORLD_HUMAN_STAND_MOBILE',
+        drivingschool = true,
+        zoneOptions = { -- Used for when UseTarget is false
+            length = 3.0,
+            width = 3.0
+        }
+    }
+```
+
 ## Inventory
 If you use `qb-inventory` or `lj-inventory` go to your-inventory/html/js/app.js and find **`switch (itemData.name) {`** **`case "id_card":`** and add the following in between the two:
 ```
