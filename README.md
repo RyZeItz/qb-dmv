@@ -1,4 +1,4 @@
-# ESX DMVSchool Converted to QBCore.
+# DMVSchool
 Players Can Take a Theoritical test and get their Permit, they can then take 1 Driving Test each for: Personal Vehicles, Bikes/Motorcycles, and CDL License. Depending on how you want to set it up you can make it so when the player takes the Motorcycle Test it just adds an endorsement to the players Drivers License or you can give the player a Bike License to carry around. Each Type of driving test can have a unique route along with multiple locations for a DMV Ped.
 
 <br />
@@ -6,7 +6,7 @@ Players Can Take a Theoritical test and get their Permit, they can then take 1 D
 # Driving School MLO
 https://forum.cfx.re/t/mlo-driving-school-interior/1466079
 
-**DISCLAIMER: This is not my MLO OR SCRIPT. I just found both for free online and saw it wasnt updated to the new qb so thats why i am here :)**
+**DISCLAIMER: This is not my MLO OR SCRIPT. I just found both for free online and saw it wasnt updated to the new qb so thats why i am here :)   Original Creator: https://github.com/bamablood94/qb-dmv/tree/main?tab=readme-ov-file**
 
 <br />
 
@@ -280,15 +280,7 @@ if Player.PlayerData.metadata['licences']['bike'] then
 
 
 That should be all for the installation. Now just start the server up and enjoy!
-# New Details
-
-- [x] Different Routes for each type of test.
-
-# Planned Details
-
-- [ ] Make it so players must be in starting vehicle to complete the drivers test
 
 # Contact Me
 
-If you have any questions or any problems please don't hesitate to message me Bama94#1994.
-If you have any fixes for something, just put in a PR Request if you have any issues, your more than welcome to put in a ticket issue here, but It's less likely for me to respond
+If you have any questions or any problems please don't hesitate to message me _._ryze_._
