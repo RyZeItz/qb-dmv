@@ -6,7 +6,7 @@ Players Can Take a Theoritical test and get their Permit, they can then take 1 D
 # Driving School MLO
 https://forum.cfx.re/t/mlo-driving-school-interior/1466079
 
-**DISCLAIMER: This is not my MLO. I just found it on cfx forums and used it as the basis for this script**
+**DISCLAIMER: This is not my MLO OR SCRIPT. I just found both for free online and saw it wasnt updated to the new qb so thats why i am here :)**
 
 <br />
 
@@ -18,9 +18,10 @@ https://forum.cfx.re/t/mlo-driving-school-interior/1466079
 
 > ## QB-Core/Shared/Items.lua:
 ```
-['permit']						 = {['name'] = 'permit',						['label'] = 'Driving Permit',			['weight'] = 0,			['type'] = 'item',		['image'] = 'id_card.png',				['unique'] = true,['useable'] = true,		['shouldClose'] = false,   ['combinable'] = nil,   ['description'] = 'A Driving permit to show you can drive a vehicle as long as you have a passenger'},
-['cdl_license']					 = {['name'] = 'cdl_license',					['label'] = 'CDL License',				['weight'] = 0,			['type'] = 'item',		['image'] = 'driver_license.png',		['unique'] = true,		['useable'] = true,		['shouldClose'] = false,   ['combinable'] = nil,   ['description'] = 'Permit to show you can drive a Commercial Vehicle.'},
-['bike_license']				 = {['name'] = 'bike_license',					['label'] = 'Bike License',				['weight'] = 0,			['type'] = 'item',		['image'] = 'driver_license.png',		['unique'] = true,		['useable'] = true,		['shouldClose'] = false,	['combinable'] = nil,	['description'] = 'Permit to show you can drive a Motorcycle/ATV'},
+    permit						 = {name = 'permit',						label = 'Driving Permit',			weight = 0,			type = 'item',		image = 'id_card.png',				unique = true,useable = true,		shouldClose = false,   combinable = nil,   description = 'A Driving permit to show you can drive a vehicle as long as you have a passenger'},
+    cdl_license				 = { name  = 'cdl_license',					label = 'Commercial License',				weight = 0,			type = 'item',		image = 'driver_license.png',		unique = true,		useable = true,		shouldClose = false,   combinable = nil,   description = 'Permit to show you can drive a Commercial Vehicle.'},
+    bike_license			 = { name = 'bike_license',					label = 'Bike License',				weight = 0,			type = 'item',		image = 'driver_license.png',		unique = true,		useable = true,		shouldClose = false,	combinable = nil,	description = 'Permit to show you can drive a Motorcycle/ATV'},
+    driver_license               = { name = 'driver_license', label = 'Drivers License', weight = 0, type = 'item', image = 'driver_license.png', unique = true, useable = true, shouldClose = false, combinable = nil, description = 'Permit to show you can drive a car' },
 ```
 
 <br />
