@@ -323,4 +323,4 @@ That should be all for the installation. Now just start the server up and enjoy!
 
 # Contact Me
 
-If you have any questions or any problems please don't hesitate to message me "_._ryze_._"
+If you have any questions or any problems please don't hesitate to message me '_._ryze_._'
