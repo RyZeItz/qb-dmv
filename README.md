@@ -29,22 +29,22 @@ https://forum.cfx.re/t/mlo-driving-school-interior/1466079
 > ## QB-Core/Server/Players.lua
 **FIND:**
 ```
-PlayerData.metadata['licences'] = PlayerData.metadata['licences'] or {
-    ['driver'] = true,
-    ['business'] = false,
-    ['weapon'] = false,
-}
+    PlayerData.metadata['licences'] = PlayerData.metadata['licences'] or {
+		['driver'] = false,
+        ['business'] = false,
+        ['weapon'] = false
+    }
 ```
 **AND REPLACE WITH:**
 ```
-PlayerData.metadata['licences'] = PlayerData.metadata['licences'] or {
-    ['permit'] = false,
-    ['driver'] = false,
-    ['cdl'] = false,
-    ['bike'] = false,
-    ['business'] = false,
-    ['weapon'] = false
-}
+    PlayerData.metadata['licences'] = PlayerData.metadata['licences'] or {
+        ['permit'] = false,
+        ['driver'] = false,
+        ['cdl'] = false,
+        ['bike'] = false,
+        ['business'] = false,
+        ['weapon'] = false
+    }
 ```
 <br />
 
@@ -59,21 +59,21 @@ RegisterNetEvent('qb-cityhall:server:requestId', function(item, hall)
     local Player = QBCore.Functions.GetPlayer(src)
     if not Player then return end
     local itemInfo = Config.Cityhalls[hall].licenses[item]
-    if not Player.Functions.RemoveMoney("cash", itemInfo.cost) then return TriggerClientEvent('QBCore:Notify', src, ('You don\'t have enough money on you, you need %s cash'):format(itemInfo.cost), 'error') end
+    if not Player.Functions.RemoveMoney('cash', itemInfo.cost, 'cityhall id') then return TriggerClientEvent('QBCore:Notify', src, ('You don\'t have enough money on you, you need %s cash'):format(itemInfo.cost), 'error') end
     local info = {}
-    if item == "id_card" then
+    if item == 'id_card' then
         info.citizenid = Player.PlayerData.citizenid
         info.firstname = Player.PlayerData.charinfo.firstname
         info.lastname = Player.PlayerData.charinfo.lastname
         info.birthdate = Player.PlayerData.charinfo.birthdate
         info.gender = Player.PlayerData.charinfo.gender
         info.nationality = Player.PlayerData.charinfo.nationality
-    elseif item == "driver_license" then
+    elseif item == 'driver_license' then
         info.firstname = Player.PlayerData.charinfo.firstname
         info.lastname = Player.PlayerData.charinfo.lastname
         info.birthdate = Player.PlayerData.charinfo.birthdate
-        info.type = "Class C Driver License"
-    elseif item == "weaponlicense" then
+        info.type = 'Class C Driver License'
+    elseif item == 'weaponlicense' then
         info.firstname = Player.PlayerData.charinfo.firstname
         info.lastname = Player.PlayerData.charinfo.lastname
         info.birthdate = Player.PlayerData.charinfo.birthdate
@@ -148,22 +148,22 @@ Config.Cityhalls = {
             display = 4,
             scale = 0.65,
             colour = 0,
-            title = "City Services"
+            title = 'City Services'
         },
         licenses = {
-            ["id_card"] = {
-                label = "ID Card",
+            ['id_card'] = {
+                label = 'ID Card',
                 cost = 50,
             },
-            ["driver_license"] = {
-                label = "Driver License",
+            ['driver_license'] = {
+                label = 'Driver License',
                 cost = 50,
-                metadata = "driver"
+                metadata = 'driver'
             },
-            ["weaponlicense"] = {
-                label = "Weapon License",
+            ['weaponlicense'] = {
+                label = 'Weapon License',
                 cost = 50,
-                metadata = "weapon"
+                metadata = 'weapon'
             },
         }
     },
@@ -220,68 +220,36 @@ Config.Cityhalls = {
 <br />
 
 ## Inventory
-If you use `qb-inventory` or `lj-inventory` go to your-inventory/html/js/app.js and find **`FormatItemInfo`** and add the following:
+If you use `qb-inventory` or `lj-inventory` go to your-inventory/html/js/app.js and find **`switch (itemData.name) {`** **`case "id_card":`** and add the following in between the two:
 ```
-else if (itemData.name == "cdl_license") {
-            $(".item-info-title").html("<p>" + itemData.label + "</p>");
-            $(".item-info-description").html(
-                "<p><strong>First Name: </strong><span>" +
-                itemData.info.firstname +
-                "</span></p><p><strong>Last Name: </strong><span>" +
-                itemData.info.lastname +
-                "</span></p><p><strong>Birth Date: </strong><span>" +
-                itemData.info.birthdate +
-                "</span></p><p><strong>Licenses: </strong><span>" +
-                itemData.info.type +
-                "</span></p>"
-            );
-        } else if (itemData.name == "permit") {
-            $(".item-info-title").html("<p>" + itemData.label + "</p>");
-            $(".item-info-description").html(
-                "<p><strong>First Name: </strong><span>" +
-                itemData.info.firstname +
-                "</span></p><p><strong>Last Name: </strong><span>" +
-                itemData.info.lastname +
-                "</span></p><p><strong>Birth Date: </strong><span>" +
-                itemData.info.birthdate +
-                "</span></p>"
-            );
-        } else if (itemData.name == "bike_license") {
-            $(".item-info-title").html("<p>" + itemData.label + "</p>");
-            $(".item-info-description").html(
-                "<p><strong>First Name: </strong><span>" +
-                itemData.info.firstname +
-                "</span></p><p><strong>Last Name: </strong><span>" +
-                itemData.info.lastname +
-                "</span></p><p><strong>Birth Date: </strong><span>" +
-                itemData.info.birthdate +
-                "</span></p>"
-            );
-        }
+        case "cdl_license":
+            return `<p><strong>First Name: </strong><span>'${itemData.info.firstname}'</span></p>
+                    <p><strong>Last Name: </strong><span>${itemData.info.lastname}</span></p>
+                    <p><strong>Birth Date: </strong><span>${itemData.info.lastname$}</span>
+                    </p><p><strong>Licenses: </strong><span>${item.Data.info.type}</span></p>`;
+        case "permit":
+            return `<p><strong>First Name: </strong><span>'${itemData.info.firstname}'</span></p>
+                    <p><strong>Last Name: </strong><span>${itemData.info.lastname}</span></p>
+                    <p><strong>Birth Date: </strong><span>${itemData.info.lastname$}</span>
+                    </p><p><strong>Licenses: </strong><span>${item.Data.info.type}</span></p>`;
+        case "bike_license":
+            return `<p><strong>First Name: </strong><span>'${itemData.info.firstname}'</span></p>
+                    <p><strong>Last Name: </strong><span>${itemData.info.lastname}</span></p>
+                    <p><strong>Birth Date: </strong><span>${itemData.info.lastname$}</span>
+                    </p><p><strong>Licenses: </strong><span>${item.Data.info.type}</span></p>`;
 ```
-If you don't want the bike license and instead want a `Motorcycle Endorsemeonet` on your Driver License then replace the `driver_license` line with this one:
+If you don't want the bike license and instead want a `Motorcycle Endorsemeonet` on your Driver License then replace the `case "driver_license":` line with this one:
 ```
-else if (itemData.name == "driver_license") {
-            $(".item-info-title").html("<p>" + itemData.label + "</p>");
-            $(".item-info-description").html(
-                "<p><strong>First Name: </strong><span>" +
-                itemData.info.firstname +
-                "</span></p><p><strong>Last Name: </strong><span>" +
-                itemData.info.lastname +
-                "</span></p><p><strong>Birth Date: </strong><span>" +
-                itemData.info.birthdate +
-                "</span></p><p><strong>Licenses: </strong><span>" +
-                itemData.info.type +
-                "<p><strong>Endorsements: </strong><span>" +
-                itemData.info.endorsement +
-                "</span></p>"
-
-            );
-        }
+        case "driver_license":
+            return `<p><strong>First Name: </strong><span>${itemData.info.firstname}</span></p>
+            <p><strong>Last Name: </strong><span>${itemData.info.lastname}</span></p>
+            <p><strong>Birth Date: </strong><span>${itemData.info.birthdate}</span>
+            </p><p><strong>Licenses: </strong><span>${itemData.info.type}</span></p>
+            </p><p><strong>Endorsements: </strong><span>${itemData.info.endorsement}</span></p>`;
 ```
 
 > ## Qb-Cityhall/server/main.lua
-Find the GiveItem Command and add:
+Find the **`local function giveStarterItems()`** Function and add:
 ```
 elseif itemData["name"] == "permit" then
 					info.firstname = Player.PlayerData.charinfo.firstname
