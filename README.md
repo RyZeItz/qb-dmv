@@ -27,15 +27,7 @@ https://forum.cfx.re/t/mlo-driving-school-interior/1466079
 <br />
 
 > ## QB-Core/Server/Players.lua
-**FIND:**
-```
-    PlayerData.metadata['licences'] = PlayerData.metadata['licences'] or {
-		['driver'] = false,
-        ['business'] = false,
-        ['weapon'] = false
-    }
-```
-**AND REPLACE WITH:**
+**FIND `PlayerData.metadata['licences'] = PlayerData.metadata['licences'] or {` AND REPLACE WITH:**
 ```
     PlayerData.metadata['licences'] = PlayerData.metadata['licences'] or {
         ['permit'] = false,
@@ -52,39 +44,7 @@ https://forum.cfx.re/t/mlo-driving-school-interior/1466079
 <br />
 
 > ## QB-Cityhall/server/main.lua
-**FIND:**
-```
-RegisterNetEvent('qb-cityhall:server:requestId', function(item, hall)
-    local src = source
-    local Player = QBCore.Functions.GetPlayer(src)
-    if not Player then return end
-    local itemInfo = Config.Cityhalls[hall].licenses[item]
-    if not Player.Functions.RemoveMoney('cash', itemInfo.cost, 'cityhall id') then return TriggerClientEvent('QBCore:Notify', src, ('You don\'t have enough money on you, you need %s cash'):format(itemInfo.cost), 'error') end
-    local info = {}
-    if item == 'id_card' then
-        info.citizenid = Player.PlayerData.citizenid
-        info.firstname = Player.PlayerData.charinfo.firstname
-        info.lastname = Player.PlayerData.charinfo.lastname
-        info.birthdate = Player.PlayerData.charinfo.birthdate
-        info.gender = Player.PlayerData.charinfo.gender
-        info.nationality = Player.PlayerData.charinfo.nationality
-    elseif item == 'driver_license' then
-        info.firstname = Player.PlayerData.charinfo.firstname
-        info.lastname = Player.PlayerData.charinfo.lastname
-        info.birthdate = Player.PlayerData.charinfo.birthdate
-        info.type = 'Class C Driver License'
-    elseif item == 'weaponlicense' then
-        info.firstname = Player.PlayerData.charinfo.firstname
-        info.lastname = Player.PlayerData.charinfo.lastname
-        info.birthdate = Player.PlayerData.charinfo.birthdate
-    else
-        return false -- DropPlayer(src, 'Attempted exploit abuse')
-    end
-    if not Player.Functions.AddItem(item, 1, nil, info) then return end
-    TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], 'add')
-end)
-```
-**AND REPLACE WITH:**
+**FIND `RegisterNetEvent('qb-cityhall:server:requestId', function(item, hall)` AND REPLACE WITH:**
 ```
 RegisterNetEvent('qb-cityhall:server:requestId', function(item, hall)
     local src = source
@@ -137,39 +97,7 @@ end)
 ```
 
 > ## QB-Cityhall/config.lua
-**FIND:**
-```
-Config.Cityhalls = {
-    { -- Cityhall 1
-        coords = vec3(-265.0, -963.6, 31.2),
-        showBlip = true,
-        blipData = {
-            sprite = 487,
-            display = 4,
-            scale = 0.65,
-            colour = 0,
-            title = 'City Services'
-        },
-        licenses = {
-            ['id_card'] = {
-                label = 'ID Card',
-                cost = 50,
-            },
-            ['driver_license'] = {
-                label = 'Driver License',
-                cost = 50,
-                metadata = 'driver'
-            },
-            ['weaponlicense'] = {
-                label = 'Weapon License',
-                cost = 50,
-                metadata = 'weapon'
-            },
-        }
-    },
-}
-```
-**AND REPLACE WITH:**
+**FIND `Config.Cityhalls = {` AND REPLACE WITH:**
 ```
 Config.Cityhalls = {
     { -- Cityhall 1
@@ -245,22 +173,10 @@ Config.DrivingSchools = {
 <br />
 
 ## QB-Cityhall/config.lua
-**FIND AND REMOVE**
-```
-    {
-        model = 'a_m_m_eastsa_02',
-        coords = vec4(240.91, -1379.2, 32.74, 138.96),
-        scenario = 'WORLD_HUMAN_STAND_MOBILE',
-        drivingschool = true,
-        zoneOptions = { -- Used for when UseTarget is false
-            length = 3.0,
-            width = 3.0
-        }
-    }
-```
+**FIND AND CHANGE `drivingschool = true,` TO `drivingschool = false,`**
 
 ## Inventory
-If you use `qb-inventory` or `lj-inventory` go to your-inventory/html/js/app.js and find **`switch (itemData.name) {`** **`case "id_card":`** and add the following in between the two:
+If you use `qb-inventory` go to your-inventory/html/js/app.js and find **`switch (itemData.name) {`** and **`case "id_card":`** and add the following in between the two:
 ```
         case "cdl_license":
             return `<p><strong>First Name: </strong><span>'${itemData.info.firstname}'</span></p>
