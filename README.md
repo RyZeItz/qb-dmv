@@ -270,6 +270,69 @@ else if (itemData.name == "driver_license") {
         }
 ```
 
+## LJ-Inventory
+If you use `lj-inventory` go to your-inventory/config/metadata.js and find **`    if (itemData != null && itemData.info != "") {`** and **`else if (itemData.name == "driver_license") {`** and add the following in between these two sections (example in picture below):
+```
+else if (itemData.name == "cdl_license") {
+            $(".item-info-title").html("<p>" + itemData.label + "</p>");
+            $(".item-info-description").html(
+                "<p><strong>First Name: </strong><span>" +
+                itemData.info.firstname +
+                "</span></p><p><strong>Last Name: </strong><span>" +
+                itemData.info.lastname +
+                "</span></p><p><strong>Birth Date: </strong><span>" +
+                itemData.info.birthdate +
+                "</span></p><p><strong>Licenses: </strong><span>" +
+                itemData.info.type +
+                "</span></p>"
+            );
+        } else if (itemData.name == "permit") {
+            $(".item-info-title").html("<p>" + itemData.label + "</p>");
+            $(".item-info-description").html(
+                "<p><strong>First Name: </strong><span>" +
+                itemData.info.firstname +
+                "</span></p><p><strong>Last Name: </strong><span>" +
+                itemData.info.lastname +
+                "</span></p><p><strong>Birth Date: </strong><span>" +
+                itemData.info.birthdate +
+                "</span></p>"
+            );
+        } else if (itemData.name == "bike_license") {
+            $(".item-info-title").html("<p>" + itemData.label + "</p>");
+            $(".item-info-description").html(
+                "<p><strong>First Name: </strong><span>" +
+                itemData.info.firstname +
+                "</span></p><p><strong>Last Name: </strong><span>" +
+                itemData.info.lastname +
+                "</span></p><p><strong>Birth Date: </strong><span>" +
+                itemData.info.birthdate +
+                "</span></p>"
+            );
+        }
+```
+
+![image](https://github.com/RyZeItz/qb-dmv/assets/103600006/2d869d49-4f90-4d80-9cda-2775891f9588)
+
+If you don't want the bike license and instead want a `Motorcycle Endorsemeonet` on your Driver License then replace the `else if (itemData.name == "driver_license") {` section with this one:
+```
+else if (itemData.name == "driver_license") {
+            $(".item-info-title").html("<p>" + itemData.label + "</p>");
+            $(".item-info-description").html(
+                "<p><strong>First Name: </strong><span>" +
+                itemData.info.firstname +
+                "</span></p><p><strong>Last Name: </strong><span>" +
+                itemData.info.lastname +
+                "</span></p><p><strong>Birth Date: </strong><span>" +
+                itemData.info.birthdate +
+                "</span></p><p><strong>Licenses: </strong><span>" +
+                itemData.info.type +
+                "<p><strong>Endorsements: </strong><span>" +
+                itemData.info.endorsement +
+                "</span></p>"
+
+            );
+        }
+```
 
 > ## Qb-Cityhall/server/main.lua
 Find the **`local function giveStarterItems()`** Function and add:
