@@ -2,14 +2,14 @@ Config = {}
 
 Config.UseTarget = true                                       -- (true | false)
 Config.FuelResource = 'LegacyFuel'                            -- (LegacyFuel | lj-fuel | cdn-fuel)<--Which fuel reource are you using?
-Config.VehPlate = 'DMV '..math.random(100, 999)               -- Plate Text that comes on a DMV vehicle when spawned
+Config.VehPlate = 'Learner'..math.random(100, 999)               -- Plate Text that comes on a DMV vehicle when spawned
 Config.CommandName = 'resetlicense'                           -- Command to reset a players license meta back to false. (permit | driver | cdl | bike)
 
 
 Config.PaymentType = 'cash'                                   -- (cash | bank) What account to use for payment
 Config.DriversTest = true                                     -- (true | false) Take the physical Driving Test or Not
 Config.SpeedMultiplier = 'mph'                                -- ('mph' | 'kmh')
-Config.MaxErrors       = 100                                   -- Max Amount of Errors for Driving Test before Failing.
+Config.MaxErrors       = 5                                   -- Max Amount of Errors for Driving Test before Failing.
 Config.PlayerCoordsAfterTest = vector4(222.85, -1392.84, 30.59, 310.38) -- Teleport Players to Coords after passing/failing drivers test.
 
 Config.BikeEndorsement = false                                 -- (true | false) Adds "Motorcycle Endorsement" to Drivers License else uses a seperate Bike License
@@ -17,12 +17,12 @@ Config.BikeEndorsement = false                                 -- (true | false)
 Config.Locations = {  -- Coords and Ped to Spawn
   [1] = {
     pedModel = `a_m_y_busicas_01`, 
-    coords = vector4(-262.79, -964.18, 30.22, 181.71),
+    coords = vector4(214.6, -1400.15, 30.58, 324.82), --THIS IS SET DEFAULT TO INSIDE THE MLO LINKED IN THE README.md
     blip = {
       showblip = true,
-      blipsprite = 380,
+      blipsprite = 773,
       blipscale = 0.7,
-      blipcolor = 1,
+      blipcolor = 4,
       label = 'DMV School'
     }
   },
@@ -53,12 +53,12 @@ Config.Blip = {                                             -- Blip Config
 }
 
 Config.VehicleModels = {                                    -- Vehicle to Spawn with Driver Test
-  ['driver'] = 'sultan',
-  ['cdl'] = 'stockade',
-  ['bike'] = 'sanchez'
+  ['driver'] = 'issi3',
+  ['cdl'] = 'pounder',
+  ['bike'] = 'faggio'
 }
 
-Config.SpeedLimits = {                                      -- Speed Limits in each zone
+Config.SpeedLimits = {                                      -- Speed Limits in each zone )MPH)
   residence = 35,
   town      = 55,
   freeway   = 80
