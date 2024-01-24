@@ -194,7 +194,7 @@ If you use `qb-inventory` go to your-inventory/html/js/app.js and find **`switch
                     <p><strong>Birth Date: </strong><span>${itemData.info.lastname$}</span>
                     </p><p><strong>Licenses: </strong><span>${item.Data.info.type}</span></p>`;
 ```
-(![image](https://github.com/RyZeItz/qb-dmv/assets/103600006/345ae786-851a-4b1e-a08a-379f3ba94c7b))
+![image](https://github.com/RyZeItz/qb-dmv/assets/103600006/345ae786-851a-4b1e-a08a-379f3ba94c7b)
 
 If you don't want the bike license and instead want a `Motorcycle Endorsemeonet` on your Driver License then replace the `case "driver_license":` section with this one:
 ```
@@ -207,7 +207,7 @@ If you don't want the bike license and instead want a `Motorcycle Endorsemeonet`
 ```
 
 ## QS-Inventory
-If you use `qs-inventory` go to your-inventory/config/metadata.js and find **`if (itemData.name == "id_card") {`** and **`else if (itemData.name == "driver_license") {`** and add the following in between these two sections:
+If you use `qs-inventory` go to your-inventory/config/metadata.js and find **`if (itemData.name == "id_card") {`** and **`else if (itemData.name == "driver_license") {`** and add the following in between these two sections (example in picture below):
 ```
 else if (itemData.name == "cdl_license") {
             $(".item-info-title").html("<p>" + itemData.label + "</p>");
@@ -246,6 +246,9 @@ else if (itemData.name == "cdl_license") {
             );
         }
 ```
+
+![image](https://github.com/RyZeItz/qb-dmv/assets/103600006/a2a6bb0f-637e-4574-82c9-8c41e40d8d66)
+
 If you don't want the bike license and instead want a `Motorcycle Endorsemeonet` on your Driver License then replace the `else if (itemData.name == "driver_license") {` section with this one:
 ```
 else if (itemData.name == "driver_license") {
