@@ -13,6 +13,14 @@ https://forum.cfx.re/t/mlo-driving-school-interior/1466079
 # Installation:
 <br />
 
+# Dependencies:
+- QB-Core
+- QB-Cityhall
+- QB-Inventory
+- QS-Inventory
+- Lj-Inventory
+<br />
+
 ## QB-CORE
 <br />
 
