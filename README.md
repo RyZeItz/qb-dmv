@@ -14,7 +14,7 @@ https://forum.cfx.re/t/mlo-driving-school-interior/1466079
 <br />
 
 # Dependencies:
-- QB-Core
+- QB-Core (https://github.com/qbcore-framework/qb-core)
 - QB-Cityhall
 - QB-Inventory
 - QS-Inventory
