@@ -369,7 +369,7 @@ if args[2] == 'driver' or args[2] == 'weapon' or args[2] == 'cdl' or args[2] == 
 ```
 
 > ## QB-Policejob/server/main
-Find `QBCore.Commands.Add('takedrivinglicense', Lang:t('commands.drivinglicense'), {}, false, function(source)` and add these three underneath the paragraph (picture shown below this section):
+Find `QBCore.Commands.Add('takedrivinglicense', Lang:t('commands.drivinglicense'), {}, false, function(source)` and add these three underneath (picture shown below this section):
 
 ```
 QBCore.Commands.Add('takepermit', Lang:t('commands.permit'), {}, false, function(source)
@@ -404,7 +404,49 @@ end)
  ```
 ![image](https://github.com/RyZeItz/qb-dmv/assets/103600006/83446bf1-2502-4722-aeaa-fa2ff6d3d789)
 
+> ## QB-Policejob/client/interactions
+Find `RegisterNetEvent('police:client:SeizeDriverLicense', function()` and add these three underneath (picture shown below this section):
+```
+RegisterNetEvent('police:client:SeizePermit', function()
+    local player, distance = QBCore.Functions.GetClosestPlayer()
+    if player ~= -1 and distance < 2.5 then
+        local playerId = GetPlayerServerId(player)
+        TriggerServerEvent('police:server:SeizePermit', playerId)
+    else
+        QBCore.Functions.Notify(Lang:t('error.none_nearby'), 'error')
+    end
+end)
 
+RegisterNetEvent('police:client:SeizePCdl', function()
+    local player, distance = QBCore.Functions.GetClosestPlayer()
+    if player ~= -1 and distance < 2.5 then
+        local playerId = GetPlayerServerId(player)
+        TriggerServerEvent('police:server:SeizeCdl', playerId)
+    else
+        QBCore.Functions.Notify(Lang:t('error.none_nearby'), 'error')
+    end
+end)
+
+RegisterNetEvent('police:client:SeizeBike', function()
+    local player, distance = QBCore.Functions.GetClosestPlayer()
+    if player ~= -1 and distance < 2.5 then
+        local playerId = GetPlayerServerId(player)
+        TriggerServerEvent('police:server:SeizeBike', playerId)
+    else
+        QBCore.Functions.Notify(Lang:t('error.none_nearby'), 'error')
+    end
+end)
+```
+![image](https://github.com/RyZeItz/qb-dmv/assets/103600006/2a41b976-62c8-4440-ae61-ad6b9af3f036)
+
+> ## QB-Policejob/locales/(whatever language you are using en= english etc)
+Find `commands = {` and add (picture shown below this section):
+```
+permit = 'Seize Permit License (Police Only)',
+cdl = 'Seize Commercial License (Police Only)',
+bike = 'Seize Mototrcycle License (Police Only)',
+```
+![image](https://github.com/RyZeItz/qb-dmv/assets/103600006/3fdcfe6f-0935-49b3-abde-034d73d3568b)
 
 <br />
 
