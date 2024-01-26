@@ -178,7 +178,7 @@ Config.DrivingSchools = {
 }
 ```
 
-## QB-Cityhall/config.lua
+> ## QB-Cityhall/config.lua
 **FIND AND CHANGE `drivingschool = true,` TO `drivingschool = false,`**
 
 ## QB-Inventory
