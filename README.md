@@ -179,6 +179,23 @@ Config.DrivingSchools = {
 > ## QB-Cityhall/config.lua
 **FIND AND CHANGE `drivingschool = true,` TO `drivingschool = false,`**
 
+> ## Qb-Cityhall/server/main.lua
+Find the **`local function giveStarterItems()`** Function and add:
+```
+elseif itemData["name"] == "permit" then
+					info.firstname = Player.PlayerData.charinfo.firstname
+					info.lastname = Player.PlayerData.charinfo.lastname
+					info.birthdate = Player.PlayerData.charinfo.birthdate
+				elseif itemData["name"] == "cdl_license" then
+					info.firstname = Player.PlayerData.charinfo.firstname
+					info.lastname = Player.PlayerData.charinfo.lastname
+					info.birthdate = Player.PlayerData.charinfo.birthdate
+				elseif itemData["name"] == "bike_license" then
+					info.firstname = Player.PlayerData.charinfo.firstname
+					info.lastname = Player.PlayerData.charinfo.lastname
+					info.birthdate = Player.PlayerData.charinfo.birthdate
+```
+
 ## QB-Inventory
 If you use `qb-inventory` go to your-inventory/html/js/app.js and find **`switch (itemData.name) {`** and **`case "id_card":`** and add the following in between the two lines (example below):
 ```
@@ -209,6 +226,8 @@ If you don't want the bike license and instead want a `Motorcycle Endorsemeonet`
             </p><p><strong>Licenses: </strong><span>${itemData.info.type}</span></p>
             </p><p><strong>Endorsements: </strong><span>${itemData.info.endorsement}</span></p>`;
 ```
+
+<br />
 
 ## QS-Inventory
 If you use `qs-inventory` go to your-inventory/config/metadata.js and find **`if (itemData.name == "id_card") {`** and **`else if (itemData.name == "driver_license") {`** and add the following in between these two sections (example in picture below):
@@ -337,25 +356,6 @@ else if (itemData.name == "driver_license") {
             );
         }
 ```
-
-> ## Qb-Cityhall/server/main.lua
-Find the **`local function giveStarterItems()`** Function and add:
-```
-elseif itemData["name"] == "permit" then
-					info.firstname = Player.PlayerData.charinfo.firstname
-					info.lastname = Player.PlayerData.charinfo.lastname
-					info.birthdate = Player.PlayerData.charinfo.birthdate
-				elseif itemData["name"] == "cdl_license" then
-					info.firstname = Player.PlayerData.charinfo.firstname
-					info.lastname = Player.PlayerData.charinfo.lastname
-					info.birthdate = Player.PlayerData.charinfo.birthdate
-				elseif itemData["name"] == "bike_license" then
-					info.firstname = Player.PlayerData.charinfo.firstname
-					info.lastname = Player.PlayerData.charinfo.lastname
-					info.birthdate = Player.PlayerData.charinfo.birthdate
-```
-
-<br />
 
 <br />
 
