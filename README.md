@@ -364,7 +364,9 @@ elseif itemData["name"] == "permit" then
 
 > ## QB-Policejob/server/main
 Find `if args[2] == 'driver' or args[2] == 'weapon' then` and replace both of the lines with:
-```if args[2] == 'driver' or args[2] == 'weapon' or args[2] == 'cdl' or args[2] == 'bike' or args[2] == 'permit'  then```
+```
+if args[2] == 'driver' or args[2] == 'weapon' or args[2] == 'cdl' or args[2] == 'bike' or args[2] == 'permit'  then
+```
 
 > ## QB-Policejob/server/main
 Find `QBCore.Commands.Add('takedrivinglicense', Lang:t('commands.drivinglicense'), {}, false, function(source)` and add these three underneath the paragraph (picture shown below this section):
