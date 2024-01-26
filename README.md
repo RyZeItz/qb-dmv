@@ -153,8 +153,6 @@ Config.Cityhalls = {
 }
 ```
 
-<br />
-
 > ## QB-Cityhall/config.lua
 **FIND AND REMOVE**
 ```
@@ -358,6 +356,51 @@ elseif itemData["name"] == "permit" then
 ```
 
 <br />
+
+<br />
+
+## QB-POLICEJOB
+<br />
+
+> ## QB-Policejob/server/main
+Find `if args[2] == 'driver' or args[2] == 'weapon' then` and replace both of the lines with:
+```if args[2] == 'driver' or args[2] == 'weapon' or args[2] == 'cdl' or args[2] == 'bike' or args[2] == 'permit'  then```
+
+> ## QB-Policejob/server/main
+Find `QBCore.Commands.Add('takedrivinglicense', Lang:t('commands.drivinglicense'), {}, false, function(source)` and add these three underneath the paragraph (picture shown below this section):
+
+```
+QBCore.Commands.Add('takepermit', Lang:t('commands.permit'), {}, false, function(source)
+    local src = source
+    local Player = QBCore.Functions.GetPlayer(src)
+    if Player.PlayerData.job.type == 'leo' and Player.PlayerData.job.onduty then
+        TriggerClientEvent('police:client:SeizePermit', source)
+    else
+        TriggerClientEvent('QBCore:Notify', src, Lang:t('error.on_duty_police_only'), 'error')
+    end
+end)
+
+QBCore.Commands.Add('takebikelicense', Lang:t('commands.bike'), {}, false, function(source)
+    local src = source
+    local Player = QBCore.Functions.GetPlayer(src)
+    if Player.PlayerData.job.type == 'leo' and Player.PlayerData.job.onduty then
+        TriggerClientEvent('police:client:SeizeBike', source)
+    else
+        TriggerClientEvent('QBCore:Notify', src, Lang:t('error.on_duty_police_only'), 'error')
+    end
+end)
+
+QBCore.Commands.Add('takecdllicense', Lang:t('commands.cdl'), {}, false, function(source)
+    local src = source
+    local Player = QBCore.Functions.GetPlayer(src)
+    if Player.PlayerData.job.type == 'leo' and Player.PlayerData.job.onduty then
+        TriggerClientEvent('police:client:SeizeCdl', source)
+    else
+        TriggerClientEvent('QBCore:Notify', src, Lang:t('error.on_duty_police_only'), 'error')
+    end
+end)
+ ```
+![image](https://github.com/RyZeItz/qb-dmv/assets/103600006/83446bf1-2502-4722-aeaa-fa2ff6d3d789)
 
 
 
