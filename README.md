@@ -128,12 +128,12 @@ Config.Cityhalls = {
                 cost = 25,
                 metadata = 'permit',
             },
-            ["cdl"] = {
+            ["cdl_license"] = {
                 label = 'CDL',
                 cost = 75,
                 metadata = 'cdl',
             },
-            ["bike"] = {
+            ["bike_license"] = {
                 label = 'Bike License',
                 cost = 50,
                 metadata = 'bike',
