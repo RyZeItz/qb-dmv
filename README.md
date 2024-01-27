@@ -196,6 +196,17 @@ elseif itemData["name"] == "permit" then
 					info.birthdate = Player.PlayerData.charinfo.birthdate
 ```
 
+If you don't want the bike license and instead want a `Motorcycle Endorsemeonet` on your Driver License then replace the `case "driver_license":` section with this one:
+```
+        case "driver_license":
+            return `<p><strong>First Name: </strong><span>${itemData.info.firstname}</span></p>
+            <p><strong>Last Name: </strong><span>${itemData.info.lastname}</span></p>
+            <p><strong>Birth Date: </strong><span>${itemData.info.birthdate}</span>
+            </p><p><strong>Licenses: </strong><span>${itemData.info.type}</span></p>
+            </p><p><strong>Endorsements: </strong><span>${itemData.info.endorsement}</span></p>`;
+```
+
+
 ## QB-Inventory
 If you use `qb-inventory` go to your-inventory/html/js/app.js and find **`switch (itemData.name) {`** and **`case "id_card":`** and add the following in between the two lines (example below):
 ```
@@ -216,16 +227,6 @@ If you use `qb-inventory` go to your-inventory/html/js/app.js and find **`switch
                     </p><p><strong>Licenses: </strong><span>${item.Data.info.type}</span></p>`;
 ```
 ![image](https://github.com/RyZeItz/qb-dmv/assets/103600006/345ae786-851a-4b1e-a08a-379f3ba94c7b)
-
-If you don't want the bike license and instead want a `Motorcycle Endorsemeonet` on your Driver License then replace the `case "driver_license":` section with this one:
-```
-        case "driver_license":
-            return `<p><strong>First Name: </strong><span>${itemData.info.firstname}</span></p>
-            <p><strong>Last Name: </strong><span>${itemData.info.lastname}</span></p>
-            <p><strong>Birth Date: </strong><span>${itemData.info.birthdate}</span>
-            </p><p><strong>Licenses: </strong><span>${itemData.info.type}</span></p>
-            </p><p><strong>Endorsements: </strong><span>${itemData.info.endorsement}</span></p>`;
-```
 
 <br />
 
