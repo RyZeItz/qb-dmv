@@ -460,6 +460,12 @@ bike = 'Seize Mototrcycle License (Police Only)',
 ```
 ![image](https://github.com/RyZeItz/qb-dmv/assets/103600006/3fdcfe6f-0935-49b3-abde-034d73d3568b)
 
+> ## QB-Policejob/locales/(whatever language you are using en= english etc)
+Find `license_type = 'License Type (driver/weapon)',` and replace with (picture shown below this section):
+```
+license_type = 'License Type (driver/weapon/permit/cdl/bike)',
+```
+
 <br />
 
 
