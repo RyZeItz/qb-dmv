@@ -196,16 +196,16 @@ elseif itemData["name"] == "permit" then
 					info.birthdate = Player.PlayerData.charinfo.birthdate
 ```
 
-If you don't want the bike license and instead want a `Motorcycle Endorsemeonet` on your Driver License then replace the `case "driver_license":` section with this one:
+If you want the endorsement for the drivers license then remove the bike_license line and instead add the following to the drivers license line:
 ```
-        case "driver_license":
-            return `<p><strong>First Name: </strong><span>${itemData.info.firstname}</span></p>
-            <p><strong>Last Name: </strong><span>${itemData.info.lastname}</span></p>
-            <p><strong>Birth Date: </strong><span>${itemData.info.birthdate}</span>
-            </p><p><strong>Licenses: </strong><span>${itemData.info.type}</span></p>
-            </p><p><strong>Endorsements: </strong><span>${itemData.info.endorsement}</span></p>`;
+if Player.PlayerData.metadata['licences']['bike'] then
+						info.endorsement = 'Motorcycle Endorsement'
+					else
+						info.endorsement = 'None'
+					end
 ```
 
+<br />
 
 ## QB-Inventory
 If you use `qb-inventory` go to your-inventory/html/js/app.js and find **`switch (itemData.name) {`** and **`case "id_card":`** and add the following in between the two lines (example below):
@@ -227,6 +227,17 @@ If you use `qb-inventory` go to your-inventory/html/js/app.js and find **`switch
                     </p><p><strong>Licenses: </strong><span>${item.Data.info.type}</span></p>`;
 ```
 ![image](https://github.com/RyZeItz/qb-dmv/assets/103600006/345ae786-851a-4b1e-a08a-379f3ba94c7b)
+
+If you don't want the bike license and instead want a `Motorcycle Endorsemeonet` on your Driver License then replace the `case "driver_license":` section with this one:
+```
+        case "driver_license":
+            return `<p><strong>First Name: </strong><span>${itemData.info.firstname}</span></p>
+            <p><strong>Last Name: </strong><span>${itemData.info.lastname}</span></p>
+            <p><strong>Birth Date: </strong><span>${itemData.info.birthdate}</span>
+            </p><p><strong>Licenses: </strong><span>${itemData.info.type}</span></p>
+            </p><p><strong>Endorsements: </strong><span>${itemData.info.endorsement}</span></p>`;
+```
+
 
 <br />
 
@@ -451,16 +462,6 @@ bike = 'Seize Mototrcycle License (Police Only)',
 
 <br />
 
-If you want the endorsement for the drivers license then remove the bike_license line and instead add the following to the drivers license line:
-```
-if Player.PlayerData.metadata['licences']['bike'] then
-						info.endorsement = 'Motorcycle Endorsement'
-					else
-						info.endorsement = 'None'
-					end
-```
-
-<br />
 
 
 That should be all for the installation. Now just start the server up and enjoy! (PLEASE NOTE IF PLAYERS ALREADY HAVE A DRIVERS LICENSE THIS WILL CAUSE HAVING TO DO A COMMERCIAL LICENCE BEFORE HAVING ACCESS TO THE BIKE LICENCE AS SOMEONE WITHOUT A DRIVERS LICENCE WILL HAVE TO TAKE THE CAR DRIVING TEST IN ABLE TO GAIN ACCESS TO THE BIKE AND COMMERCIAL LICENCE NOT THE COMMERCIAL. THIS CAN BE FIXED THROUGH YOUR DATABASE (REMOVING THE LICENCE FROM EVERYONE), OR CREATING A NEW CHARACTER, OR USING THE BUILT IN COMMAND IN THE CONFIG `Config.CommandName = 'resetlicense'                           -- Command to reset a players license meta back to false. (permit | driver | cdl | bike)`
